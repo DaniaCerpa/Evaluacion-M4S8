@@ -13,14 +13,16 @@ def leer_informacion(archivo:str, formato:str):
         
         with open(path, "r") as nuevo_archivo:
             print(f"El archivo {archivo}.{formato} ya existe, ha sido creado previamente")
-            for lineas in nuevo_archivo:
+            contenido = nuevo_archivo.readlines()
+            for lineas in contenido:
                 print(lineas.strip()) #funcion strip() elimina los espacios en blanco entre lineas.
                 
          
     except FileNotFoundError:
         print(f"El archivo al cual intentas acceder no existe o no se encuentra dentro de la ruta especificada")
 
-    
+    except Exception as e:
+        print("Error: ", e)
     
 def main():
     """Función principal del programa que entrega los parametros necesarios para la posterior ejecución de la función leer_informacion().
